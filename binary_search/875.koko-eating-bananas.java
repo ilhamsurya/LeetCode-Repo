@@ -1,3 +1,4 @@
+package binary_search;
 /*
  * @lc app=leetcode id=875 lang=java
  *

@@ -1,5 +1,6 @@
+package array_hashing;
+
 import java.util.HashMap;
-import java.util.HashSet;
 
 /*
  * @lc app=leetcode id=1 lang=java
