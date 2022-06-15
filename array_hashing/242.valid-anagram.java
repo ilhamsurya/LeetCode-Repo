@@ -13,32 +13,23 @@ import java.util.Map;
 class Solution {
     public boolean isAnagram(String s, String t) {
         // Solution By Ilham Surya 15/06/22
-        // Hashmap Approach Time O(N), Space O(N)
-        HashMap<Character, Integer> map = new HashMap<>();
-        if (s.length() != t.length())
-            return false;
+        // Array Approach Time O(N), Space O(1) optimized
+
+        int[] alphabet = new int[26];
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (map.containsKey(ch)) {
-                map.put(ch, map.get(ch) + 1);
-            } else {
-                map.put(ch, 1);
-            }
+            alphabet[ch - 'a']++;
         }
         for (int j = 0; j < t.length(); j++) {
             char ch = t.charAt(j);
-            if (map.containsKey(ch)) {
-                if (map.get(ch) >= 1) {
-                    map.put(ch, map.get(ch) - 1);
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
+            alphabet[ch - 'a']--;
         }
-        System.out.println(map);
+        for (int i : alphabet) {
+            if (i != 0)
+                return false;
+        }
         return true;
+
     }
 }
 // @lc code=end
