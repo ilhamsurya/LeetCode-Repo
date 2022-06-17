@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-import javax.swing.tree.TreeNode;
-
 /*
  * @lc app=leetcode id=144 lang=java
  *

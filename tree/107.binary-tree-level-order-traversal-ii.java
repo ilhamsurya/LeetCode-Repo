@@ -1,11 +1,8 @@
 package tree;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import javax.swing.tree.TreeNode;
 
 /*
  * @lc app=leetcode id=107 lang=java

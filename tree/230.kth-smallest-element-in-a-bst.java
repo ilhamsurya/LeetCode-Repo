@@ -2,8 +2,6 @@ package tree;
 
 import java.util.Stack;
 
-import javax.swing.tree.TreeNode;
-
 /*
  * @lc app=leetcode id=230 lang=java
  *
