@@ -58,6 +58,12 @@
 ### Two Pointer
 * [✓] Valid Palindrome
 
-  
+### 17 June
+### Tree
+* [✓] Binary tree level order traversal
+* [✓] Binary tree preorder traversal
+* [✓] K-th smallest element in BST
+* [✓] Count good nodes in binary tree
+
 
 ---

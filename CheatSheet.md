@@ -319,3 +319,59 @@ Maximum depth of binary tree
         return Math.max(left, right) + 1;
     }
 ```
+Traversal
+| Type        | Pattern         |
+| ------------- |:-------------:| 
+| Preorder     | Root->left->right |
+| Inorder      | left->root->right |   
+| Postorder    | left->right->root |  
+![Traversal Example](/images/traversal.png "Traversal Example")
+
+Preorder Traversal
+> Iterative method using stack
+```bash
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // Solution by ilham surya 17/06/22
+        // Iterative Method (Stack)
+        List<Integer> pre = new LinkedList<>();
+        if (root == null)
+            return pre;
+        Stack<TreeNode> toVisit = new Stack<>();
+        toVisit.push(root);
+
+        while (!toVisit.empty()) {
+            TreeNode visiting = toVisit.pop();
+            pre.add(visiting.val);
+            if (visiting.right != null)
+                toVisit.push(visiting.right);
+            if (visiting.left != null)
+                toVisit.push(visiting.left);
+        }
+        return pre;
+    }
+```
+> Recursive method
+```bash
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // Solution by ilham surya 17/06/22
+        // Recursive Method
+        List<Integer> pre = new LinkedList<>();
+        preOrderHelper(root, pre);
+        return pre;
+    }
+
+    public void preOrderHelper(TreeNode root, List<Integer> pre) {
+        if (root == null)
+            return;
+        pre.add(root.val);
+        preOrderHelper(root.left, pre);
+        preOrderHelper(root.right, pre);
+    }
+```
+
+Depth First Search
+>A traversal algorithm that starts traversing the graph/tree from the root node and explores all the neighboring node **O(V+E) where V is the number of node and E is the edges** time complexity. 
+
+
+Breadth First Search
+>A traversal algorithm that starts traversing the graph/tree from the root node and explores all the neighboring node **O(V+E) where V is the number of node and E is the edges** time complexity. 
