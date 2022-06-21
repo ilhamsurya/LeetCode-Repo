@@ -260,6 +260,28 @@ While (iterator.hasNext()){
 }
 ```
 ## String
+String Builder
+```bash
+  StringBuilder str = new StringBuilder();
+```
+Add to string Builder
+```bash
+  str.append()
+```
+Convert to array
+```bash
+  char[] ch = str.toCharArray()
+```
+Compare lexicographically
+```bash
+  String sen1= "sample"
+  String sen2= "a sample"
+  sen1.compareTo(sen2);
+```
+Convert back from array to string
+```bash
+  new String(ch);
+```
 Chech if letter or digit
 ```bash
 char ch = 'A'
