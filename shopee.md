@@ -1,13 +1,7 @@
 ## Sort
 Difference between merge sort & quick sort 
-> Is a divide and conquer algorithm, it picks an element as pivot and partitions the given array around pivot. **O(n log n)** time complexity.
-```bash
-    
-```
-Quick sort implementation
-```bash
-    
-```
+> Quicksort and merge sort has **O(n log n)** time complexity. but quicksort is preffered algorithm because the **O(log n)** space complexity while merge sort requires **O(n)** 
+
 ## Math 
 * [✓] Two Sum
 * [ ] Largest Number
@@ -31,13 +25,14 @@ Quick sort implementation
 * [ ] Spiral Matrix
 
 ## Linked List 
-* [ ] Merge Two Sorted list
-* [ ] Reverse list
+* [✓] Merge Two Sorted list
+* [✓] Reverse list
+* [ ] Reorder list
 * [ ] Remove the last nth node 
-  
+    
 ## Tree
 * [ ] Balanced BST
-* [ ] Traversal (Preorder, Inorder,Postorder)
+* [ ] Traversal (Preorder,Inorder,Postorder)
 
 ## DFS
  * [ ] Number Of Island

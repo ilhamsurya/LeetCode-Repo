@@ -296,9 +296,88 @@ Character.isLetterOrDigit(ch)
 ## Sort
 Quicksort
 > Is a divide and conquer algorithm, it picks an element as pivot and partitions the given array around pivot. **O(n log n)** time complexity.
+![Merge Sort Example](/images/quicksort.png "Quick Sort Example")
 ```bash
-    
+  # first implementation of quick sort, take array, first and last index
+  public void quickSort(int arr[], int begin, int end) {
+      # wont stop until the arr is sorted
+      if (begin < end) {
+          int partitionIndex = partition(arr, begin, end);
+
+          quickSort(arr, begin, partitionIndex-1);
+          quickSort(arr, partitionIndex+1, end);
+      }
+  }
+  # create partition with last element as pivot
+  private int partition(int arr[], int begin, int end) {
+      int pivot = arr[end];
+      int i = (begin-1);
+
+      for (int j = begin; j < end; j++) {
+          if (arr[j] <= pivot) {
+              i++;
+
+              int swapTemp = arr[i];
+              arr[i] = arr[j];
+              arr[j] = swapTemp;
+          }
+      }
+
+      int swapTemp = arr[i+1];
+      arr[i+1] = arr[end];
+      arr[end] = swapTemp;
+
+      return i+1;
+  }
 ```
+
+MergeSort
+> Is a divide and conquer algorithm, it picks an element as pivot and partitions the given array around pivot. **O(n log n)** time complexity.
+![Merge Sort Example](/images/mergesort.png "Merge Sort Example")
+```bash
+  # first implementation of merge sort, take array, first and the length
+  public static void mergeSort(int[] a, int n) {
+      if (n < 2) {
+          return;
+      }
+      int mid = n / 2;
+      int[] l = new int[mid];
+      int[] r = new int[n - mid];
+
+      for (int i = 0; i < mid; i++) {
+          l[i] = a[i];
+      }
+      for (int i = mid; i < n; i++) {
+          r[i - mid] = a[i];
+      }
+      mergeSort(l, mid);
+      mergeSort(r, n - mid);
+
+      merge(a, l, r, mid, n - mid);
+  }
+  # comparing each number from reserved subarray
+  public static void merge(
+    int[] a, int[] l, int[] r, int left, int right) {
+  
+      int i = 0, j = 0, k = 0;
+      while (i < left && j < right) {
+          if (l[i] <= r[j]) {
+              a[k++] = l[i++];
+          }
+          else {
+              a[k++] = r[j++];
+          }
+      }
+      while (i < left) {
+          a[k++] = l[i++];
+      }
+      while (j < right) {
+          a[k++] = r[j++];
+      }
+  }
+```
+
+
 
 ## Tree
 Invert Binary Tree
@@ -358,36 +437,40 @@ Preorder Traversal
         List<Integer> pre = new LinkedList<>();
         if (root == null)
             return pre;
-        Stack<TreeNode> toVisit = new Stack<>();
-        toVisit.push(root);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
 
-        while (!toVisit.empty()) {
-            TreeNode visiting = toVisit.pop();
-            pre.add(visiting.val);
-            if (visiting.right != null)
-                toVisit.push(visiting.right);
-            if (visiting.left != null)
-                toVisit.push(visiting.left);
+        while (!stack.empty()) {
+            TreeNode tmp = stack.pop();
+            pre.add(tmp.val);
+            if (tmp.right != null)
+                stack.push(tmp.right);
+            if (tmp.left != null)
+                stack.push(tmp.left);
         }
         return pre;
     }
 ```
-> Recursive method
+Inorder Traversal
+> Iterative method using stack
 ```bash
-    public List<Integer> preorderTraversal(TreeNode root) {
-        // Solution by ilham surya 17/06/22
-        // Recursive Method
-        List<Integer> pre = new LinkedList<>();
-        preOrderHelper(root, pre);
-        return pre;
-    }
+    public List<Integer> inorderTraversal(TreeNode root) {
+        // Solution by ilham surya 21/06/22
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
 
-    public void preOrderHelper(TreeNode root, List<Integer> pre) {
-        if (root == null)
-            return;
-        pre.add(root.val);
-        preOrderHelper(root.left, pre);
-        preOrderHelper(root.right, pre);
+        TreeNode cur = root;
+
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.add(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            list.add(cur.val);
+            cur = cur.right;
+        }
+        return list;
     }
 ```
 
