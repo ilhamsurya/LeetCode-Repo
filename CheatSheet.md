@@ -1,3 +1,54 @@
+# Time Complexity
+Big O Notation
+| Notation        | Time         |
+| ------------- |:-------------:| 
+| O(1)     | Constant time complexity |
+| O(n)      | Linear time complexity |   
+| O(logn)    |  Logarithmic time complexity |  
+| O(n^2)     |  Quadratic time complexity |  
+
+O(1) - Constant Time
+> Constant time algorithms will always take same amount of time to be executed. The execution time of these algorithm is independent of the size of the input. A good example of O(1) time is accessing a value with an array index  **Other examples include: push() and pop() operations on an array**. 
+```bash
+var arr = [ 1,2,3,4,5];
+arr[2]; // => 3
+```
+
+O(n) - Linear time complexity
+>  linear time complexity if the time to execute the algorithm is directly proportional to the input size n. Therefore the time it will take to run the algorithm will increase proportionately as the size of input n increases. 
+```bash
+string[] arr1 = [orange, apple, banana, lemon]; //=> 4 steps
+string[] arr2 = [orange, apple, banana, lemon, pineaple]; //=> 5 steps
+
+for (var i = 0; i &lt; array.length; i++) {     console.log(array[i]);
+}
+```
+O(log n) - Logarithmic time complexity
+>  An algorithm has logarithmic time complexity if the time it takes to run the algorithm is proportional to the logarithm of the input size n. An example is **binary search**:
+
+# JAVA Input/Output
+Scanner Class
+```bash
+Scanner sc=new Scanner(System.in);  
+```
+Scan Type
+```bash
+int a= sc.nextInt();  
+String  a= sc.nextLine();  
+float  a= sc.float ();  
+```
+Array Input
+```bash
+# reading the number of elements from the that we want to enter  
+n=sc.nextInt();  
+# creates an array in the memory of length 10  
+    int[] array = new int[10];  
+    System.out.println("Enter the elements of the array: ");  
+    for(int i=0; i<n; i++)  {  
+    # reading array elements from the user   
+    array[i]=sc.nextInt();  
+    }  
+```
 # Data Structure
 
 ## Linked List
@@ -188,7 +239,7 @@ set.clear()
 ```
 Size Set
 ```bash
-set.clear() 
+set.size() 
 ```
 ## Stack
 Initialization
@@ -205,15 +256,15 @@ Stack.peek()
 ```
 Remove Single Item 
 ```bash
-set.remove(“Ayam”)
+stack.pop()
 ```
-Remove All Item 
+Check if empty
 ```bash
-set.clear() 
+stack.isEmpty()
 ```
-Size Set
+Size Stack
 ```bash
-set.clear() 
+set.size() 
 ```
 ## Queue
 Initialization
@@ -230,17 +281,13 @@ ArrayDeque<Integer>deQueue = new ArrayDeque<Integer>();
 ```
 Add Item
 ```bash
-queue.add(1);
+queue.offer(1);
 ```
 Access Item Top
 ```bash
-Stack.peek() 
+queue.peek() 
 ```
-Remove Single Item 
-```bash
-queue.remove(1)
-```
-Remove First Element
+Remove Element
 ```bash
 queue.poll()
 ```
@@ -260,13 +307,18 @@ While (iterator.hasNext()){
 }
 ```
 ## String
-String Builder
+Convert from int
 ```bash
-  StringBuilder str = new StringBuilder();
+    int i=10;  
+    String s=String.valueOf(i)
 ```
-Add to string Builder
+Substring
 ```bash
-  str.append()
+  string.substring(start, end); 
+```
+Equals
+```bash
+  string.equals("string2")
 ```
 Convert to array
 ```bash
@@ -282,7 +334,7 @@ Convert back from array to string
 ```bash
   new String(ch);
 ```
-Chech if letter or digit
+ Chech if letter or digit
 ```bash
 char ch = 'A'
 Character.isLetterOrDigit(ch)
@@ -292,7 +344,19 @@ To Lowercase
 char ch = 'A'
 Character.isLetterOrDigit(ch)
 ```
-
+## String Builder
+String Builder
+```bash
+  StringBuilder str = new StringBuilder();
+```
+Add to string Builder
+```bash
+  str.append()
+```
+Convert to string
+```bash
+  str.toString()
+```
 ## Sort
 Quicksort
 > Is a divide and conquer algorithm, it picks an element as pivot and partitions the given array around pivot. **O(n log n)** time complexity.
@@ -430,10 +494,9 @@ Traversal
 
 Preorder Traversal
 > Iterative method using stack
+![Preorder Example](/images/preorder.png "Preorder Example")
 ```bash
     public List<Integer> preorderTraversal(TreeNode root) {
-        // Solution by ilham surya 17/06/22
-        // Iterative Method (Stack)
         List<Integer> pre = new LinkedList<>();
         if (root == null)
             return pre;
@@ -451,11 +514,33 @@ Preorder Traversal
         return pre;
     }
 ```
+Postorder Traversal
+> Iterative method using stack
+![postorder Example](/images/postorder.png "postorder Example")
+```bash
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if(root == null) return list;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.empty()){
+            root = stack.pop();
+            list.add(0, root.val);
+            if(root.left != null){
+                stack.push(root.left)
+            }
+            if(root.right != null){
+                stack.push(root.right);
+            }
+        }
+        return list;
+    }
+```
 Inorder Traversal
 > Iterative method using stack
+![inorder Example](/images/inorder.png "inorder Example")
 ```bash
     public List<Integer> inorderTraversal(TreeNode root) {
-        // Solution by ilham surya 21/06/22
         List<Integer> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
 
@@ -475,8 +560,49 @@ Inorder Traversal
 ```
 
 Depth First Search
->A traversal algorithm that starts traversing the graph/tree from the root node and explores all the neighboring node **O(V+E) where V is the number of node and E is the edges** time complexity. 
+>A traversal algorithm that starts traversing the graph/tree from the root node to the last children **O(V+E) where V is the number of node and E is the edges** time complexity Using **Recursive**. 
+![DFS Example](/images/DFS.png "DFS Example")
+```bash
+    public List<Integer> maxDepth(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
 
+        TreeNode cur = root;
+
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.add(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            list.add(cur.val);
+            cur = cur.right;
+        }
+        return list;
+    }
+```
 
 Breadth First Search
->A traversal algorithm that starts traversing the graph/tree from the root node and explores all the neighboring node **O(V+E) where V is the number of node and E is the edges** time complexity. 
+>A traversal algorithm that search level by level **O(V+E) where V is the number of node and E is the edges** time complexity Using **Queue**. 
+![BFS Example](/images/BFS.png "BFS Example")
+```bash
+    public int maxDepth(Node root) {
+        if(root == null) return 0;
+        int depth = 0;
+        Queue<Node>queue = new LinkedList();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            for(int i=0; i<size; i++){
+                Node currentNode = queue.poll();
+                for(Node child: currentNode.children){
+                    queue.offer(child);
+                }
+            }
+            depth++;
+        } 
+        return depth++;
+    }
+```
+
