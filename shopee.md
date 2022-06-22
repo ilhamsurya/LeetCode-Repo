@@ -18,8 +18,8 @@ Difference between merge sort & quick sort
 * [ ] Product Of Array Except Self
 * [ ] Top K Frequent element
 * [ ] Sudoku
-* [ ] Next Permutation
-* [ ] Kth Largest element
+* [✓] Next Permutation
+* [✓] Kth Largest element
 
 ## 2D-Array
 * [ ] Spiral Matrix
