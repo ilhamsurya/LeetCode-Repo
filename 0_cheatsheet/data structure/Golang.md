@@ -94,6 +94,68 @@ func runRecover(){
     fmr.Println(message)
 }
 ```
+## Struct
+> Similar to class in java
+
+Create Struct
+```bash
+type Customer struct {
+    Name, Address string
+    Age int
+}
+```
+Initialize Struct
+```bash
+func main(){
+    var human Customer
+    human.name = "Ilham"
+    human.Address = "Indonesia"
+    human.Age = 21
+
+    // other approach
+
+    human := Customer{
+        Name: "ilham",
+        Address: "Indonesia",
+        Age: 21
+    }
+}
+```
+Struct Method
+```bash
+func (customer Customer) sayHi(name string){
+    fmt.Println("Hello", name, "My name is", customer.Name)
+}
+func main(){
+    human := Customer{
+        Name: "ilham",
+        Address: "Indonesia",
+        Age: 21
+    }
+    human.sayHi("Buddy")
+}
+```
+## Interface
+> Method template
+Create Interface
+```bash
+type HasName interface {
+    GetName() string
+}
+type Person struct {
+    Name string
+}
+func (person Person) GetName() string {
+    return person.Name
+}
+func sayHello(hasName HasName){
+    fmt.Println("Hello", hasName.GetName())
+}
+func main(){
+    var ilham Person
+    ilham.Name = "Ilham"
+}   sayHello(ilham)
+```
 ## Array
 Initialization
 ```bash
