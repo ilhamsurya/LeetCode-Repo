@@ -59,6 +59,41 @@ func main(){
     sayHelloWithFilter("ilham",filter)
 }
 ```
+## Exception Handling
+Defer
+> function that can be executed after execution of another func
+```bash
+func logging() {
+    fmt.Println("finish function")
+}
+func runDefer(){
+    defer logging() // execute after finish runDefer
+    fmt.Println("Run")
+}
+```
+Panic
+> to force stopping the running function
+```bash
+func runPanic(){
+    fmt.Println("Run")
+    if error {
+        panic("error")
+    }
+    
+}
+```
+Recover
+> to restore panic data, and function will keep running
+```bash
+func runRecover(){
+    fmt.Println("Run")
+    if error {
+        panic("error")
+    }
+    message := recover()
+    fmr.Println(message)
+}
+```
 ## Array
 Initialization
 ```bash
