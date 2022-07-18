@@ -156,6 +156,37 @@ func main(){
     ilham.Name = "Ilham"
 }   sayHello(ilham)
 ```
+
+## Pointer
+
+Pass By Value
+```bash
+func main(){
+    // customer2 obj only copy customer1 data
+    customer := Customer{"ilham"}
+    customer2 := customer
+}
+```
+
+
+Pass By Reference Tanpa Operator
+![Pointer Example](/images/pointer_no_operator.png "No Operator Example")
+```bash
+func main(){
+    // customer2 obj reference to same customer1 data
+    customer := Customer{"ilham"}
+    customer2 := &customer
+}
+```
+Pass By Reference Dengan Operator
+![Pointer Example](/images/pointer_operator.png "With Operator Example")
+```bash
+func main(){
+    // customer2 obj reference to same customer1 data
+    customer := Customer{"ilham"}
+    *customer2 := &customer
+}
+```
 ## Array
 Initialization
 ```bash
